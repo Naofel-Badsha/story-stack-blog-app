@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Default Light Theme */
+:root {
+  --bg: white;
+  --text: black;
+  --primary: #E64839;
+}
+
+/* Dark Theme */
+.dark {
+  --bg: #0f172a;
+  --text: white;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Tailwind v4 custom variant */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* smooth transition */
+* {
+  transition: background-color .3s, color .3s, border-color .3s;
+}
