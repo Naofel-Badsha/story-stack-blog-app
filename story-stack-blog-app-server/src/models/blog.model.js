@@ -1,18 +1,32 @@
 const mongoose = require('mongoose');
-const kittySchema = new mongoose.Schema({
+const BlogSchema = new mongoose.Schema({
   title: {
-   type: String, 
-   require: true
-},
+    type: String,
+    required: true
+  },
   description: {
     type: String,
-    require: true
+    required: true
   },
   image: {
     type: String,
-    require: true
+    required: true
   },
   author: {
-    type: Object
+    name: {
+      type: String,
+      required: true
+    },
+    image: {
+      type: String,
+      required: true
+    }
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
   }
 });
+
+const Blog = mongoose.model('Blog', BlogSchema);
+module.exports = Blog; 
