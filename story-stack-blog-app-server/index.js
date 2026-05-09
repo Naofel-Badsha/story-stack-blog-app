@@ -2,11 +2,16 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
-// const cors = require("cors");
+const cors = require("cors");
 const port = process.env.PORT || 8000;
 
 //-------getting-started.js---------
 const mongoose = require('mongoose');
+
+
+//---------Middleware---------
+app.use(express.json());
+app.use(cors());
 
 
 //-----------routes------------
@@ -29,23 +34,7 @@ main()
   .then(() => console.log("Mongodb Connected Successfully"))
   .catch(err => console.log(err));
 
-
-
-
-//---------Middleware---------
-// app.use(express.json());
-// app.use(cors());
-
-
-
-
-
-
-
-
-
-
-
+  
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
