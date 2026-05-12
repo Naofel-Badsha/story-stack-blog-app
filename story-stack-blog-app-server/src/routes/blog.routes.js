@@ -2,8 +2,24 @@ const express = require("express");
 const Blog = require("../models/blog.model");
 const router = express.Router()
 
-router.get('/', (req, res) => {
-    res.send('From Blog Routes')
+//---------Http Post Method----------
+//---------Get all blog-----------
+router.get('/', async(req, res) => {
+    try {
+        const blogs = await Blog.find()
+        res.status(201).json({
+            success: true,
+            message: "views All Blogs successfully",
+            blogs
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Failed to All blogs",
+            error: error.message
+        });
+    }
 })
 
 
