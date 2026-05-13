@@ -2,7 +2,6 @@
 import { Link } from 'react-router-dom'
 
 const BlogCard = ({ blog }) => {
-
     return (
         <div className='border-gray-200 rounded-lg p-4 bg-white shadow-md'>
             <Link to={`/blogs/${blog?._id}`}>

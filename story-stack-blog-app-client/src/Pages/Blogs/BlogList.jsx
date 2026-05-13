@@ -6,11 +6,13 @@ const BlogList = () => {
     const [blogs, setBlogs] = useState([])
     const [showBlogs, setShowBlogs] = useState(6)
     useEffect(() => {
-        fetch("/blogs.json")
+        fetch("http://localhost:8000/blogs")
             .then(res => res.json())
-            .then(data => setBlogs(data))
+            .then(data => setBlogs(data.blogs))
             .catch(error => console.error("Error fetching blog data: " + error))
     }, [])
+
+    console.log(blogs)
 
     // filter blogs based on title, description and author
     const filteredBlogs = blogs.filter(blog =>

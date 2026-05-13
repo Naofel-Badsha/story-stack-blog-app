@@ -8,9 +8,9 @@ const ManageBlogs = () => {
   const [blogs, setBlogs] = useState([])
 
   useEffect(() => {
-    fetch("/blogs.json")
+    fetch("http://localhost:8000/blogs")
       .then(res => res.json())
-      .then(data => setBlogs(data)
+      .then(data => setBlogs(data.blogs)
       )
       .catch(error => console.log(error))
   }, [])
