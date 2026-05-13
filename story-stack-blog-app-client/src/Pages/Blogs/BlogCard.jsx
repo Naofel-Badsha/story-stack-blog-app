@@ -25,9 +25,16 @@ const BlogCard = ({ blog }) => {
                     <div>
                         <p className='text-sm text-gray-600'>{blog.author.name}</p>
                         <p className='text-xs text-gray-400'>
-                            {
-                                blog?.date ? <span>{new Date(blog.date).toLocaleDateString()}</span> : <span>{new Date(blog.createdAt).toLocaleDateString()}</span>
-                            }</p>
+                            {new Date(blog?.createdAt).toLocaleString('en-GB', {
+                                day: 'numeric',
+                                month: 'numeric',
+                                year: 'numeric',
+                                hour: '2-digit',
+                                minute: '2-digit',
+                                second: '2-digit',
+                                hour12: true,
+                            })}
+                        </p>
                     </div>
                 </div>
             </div>
