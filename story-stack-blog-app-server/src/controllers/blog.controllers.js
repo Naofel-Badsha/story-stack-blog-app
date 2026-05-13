@@ -20,6 +20,92 @@ const getAllBlogs = async (req, res) => {
     }
 }
 
+
+
+
+//---------Get a Single Blog-----------
+const GetASingleBlog = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const blog = await Blog.findById(id)
+        //---------If don't find blog--------
+        if (!blog) {
+            return res.status(404).json({
+                success: false,
+                message: "Blog not found"
+            });
+        }
+        res.status(201).json({
+            success: true,
+            message: "views Single Blogs successfully",
+            blog
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Failed to Single blogs",
+            error: error.message
+        });
+    }
+
+}
+
+
+
+//---------Post a new Blog-----------
+const addedANewBlog = async (req, res) => {
+    try {
+        const blog = await Blog.create(req.body);
+        res.status(201).json({
+            success: true,
+            message: "Blog created successfully",
+            blog
+        });
+
+    } catch (error) {
+
+        res.status(500).json({
+            success: false,
+            message: "Failed to create blog",
+            error: error.message
+        });
+    }
+}
+
+
+//---------Updated a Blog-----------
+const updatedABlog = async (req, res) => {
+    try {
+        const { id } = req.params
+        const updatedBlog = await Blog.findByIdAndUpdate(id, req.body, { new: true })
+        //---------If don't put blog--------
+        if (!updatedBlog) {
+            return res.status(404).json({
+                success: false,
+                message: "Blog not found"
+            });
+        }
+        res.status(200).json({
+            success: true,
+            message: "Blog Update successfully",
+            updatedBlog
+        })
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Failed to Updating blog",
+            error: error.message
+        });
+    }
+
+}
+
+
+
+
 module.exports = {
-    getAllBlogs
+    getAllBlogs,
+    GetASingleBlog,
+    addedANewBlog,
+    updatedABlog
 }
