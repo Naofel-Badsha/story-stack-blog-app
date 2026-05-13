@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cors());
 
 
-//-----------routes------------
+//-----------routes----path---decleration----------
 const blogRoutes = require('./src/routes/blog.routes')
 app.use('/blogs', blogRoutes)
 

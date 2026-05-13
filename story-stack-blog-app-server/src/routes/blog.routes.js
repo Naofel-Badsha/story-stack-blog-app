@@ -1,27 +1,12 @@
 const express = require("express");
 const Blog = require("../models/blog.model");
 const { ObjectId } = require("mongodb");
+const { getAllBlogs } = require("../controllers/blog.controllers");
 const router = express.Router()
 
 //---------Http Get Method----------
 //---------Get all Blogs-----------
-router.get('/', async (req, res) => {
-    try {
-        const blogs = await Blog.find().sort({ createdAt: -1 })
-        res.status(201).json({
-            success: true,
-            message: "views All Blogs successfully",
-            blogs
-        });
-
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: "Failed to All blogs",
-            error: error.message
-        });
-    }
-})
+router.get('/', getAllBlogs)
 
 
 
@@ -29,7 +14,7 @@ router.get('/', async (req, res) => {
 //---------Get a Single Blog-----------
 router.get("/:id", async (req, res) => {
     try {
-        const { id } = req.params.id;
+        const { id } = req.params;
         const blog = await Blog.findById(id)
         //---------If don't find blog--------
         if (!blog) {
@@ -84,7 +69,7 @@ router.post("/add-post", async (req, res) => {
 router.put("/:id", async (req, res) => {
     try {
         const { id } = req.params
-        const updatedBlog = await Blog.findByIdAndUpdate (id, req.body, { new: true, runValidators: true })
+        const updatedBlog = await Blog.findByIdAndUpdate (id, req.body, { new: true})
         //---------If don't put blog--------
         if (!updatedBlog) {
             return res.status(404).json({
@@ -113,7 +98,7 @@ router.put("/:id", async (req, res) => {
 //---------Delete a Single Blog-----------
 router.delete("/:id", async (req, res) => {
     try {
-        const { id } = req.params.id
+        const { id } = req.params
         const blog = await Blog.findByIdAndDelete(id)
         //---------If don't find blog--------
         if (!blog) {
