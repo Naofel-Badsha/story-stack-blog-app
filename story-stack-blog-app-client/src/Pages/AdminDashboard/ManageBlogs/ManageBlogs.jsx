@@ -2,6 +2,7 @@ import { Link } from "react-router"
 import { useEffect, useState } from "react"
 import { FaEdit, FaEye } from "react-icons/fa"
 import { MdDelete } from "react-icons/md"
+import axios from "axios"
 
 
 const ManageBlogs = () => {
@@ -14,6 +15,18 @@ const ManageBlogs = () => {
       )
       .catch(error => console.log(error))
   }, [])
+
+
+
+//-------------Deleted Blog-----------
+const handleBlog = async (_id) =>{
+  const response = await axios.delete(`http://localhost:8000/blogs/${_id}`)
+  if(response.status === 200){
+    alert("Blog Deleted SuccessFully")
+  }
+  console.log(response.data)
+   console.log("Delete Blog", _id)
+}
 
 
 
@@ -88,7 +101,7 @@ const ManageBlogs = () => {
                           <button className='bg-yellow-500 text-white px-2 py-1 hover:bg-yellow-600 cursor-pointer'><FaEdit size={20} /></button>
                         </Link>
                         <Link>
-                          <button className='bg-red-500 text-white px-2 py-1 hover:bg-red-600 cursor-pointer'><MdDelete size={20} /></button>
+                          <button onClick={() => handleBlog(blog._id)}  className='bg-red-500 text-white px-2 py-1 hover:bg-red-600 cursor-pointer'><MdDelete size={20} /></button>
                         </Link>
                       </td>
                     </tr>
