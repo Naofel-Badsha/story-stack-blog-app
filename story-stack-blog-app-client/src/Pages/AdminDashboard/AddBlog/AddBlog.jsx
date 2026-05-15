@@ -1,16 +1,17 @@
 import { useForm } from "react-hook-form"
 import InputField from "./InputField"
 import TextAreaField from "./TextAreaField"
+import axios from "axios"
 
 
 const AddBlog = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }, reset
   } = useForm()
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const blogData = {
       title: data.title,
       description: data.description,
@@ -20,6 +21,17 @@ const AddBlog = () => {
         image: data.authorImages
       }
     }
+    try {
+      const response = await axios.post(`http://localhost:8000/blogs/add-post`, blogData)
+      console.log(response.data)
+      if(response.status === 200){
+        alert("Blog Create SuccessFully")
+        reset()
+      }
+    } catch (error) {
+      console.log("Error postion a new Blog", error)
+    }
+    console.log(blogData)
   }
 
   return (
