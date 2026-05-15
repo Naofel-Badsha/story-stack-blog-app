@@ -2,9 +2,10 @@ import { useForm } from "react-hook-form"
 import InputField from "./InputField"
 import TextAreaField from "./TextAreaField"
 import axios from "axios"
-
+import { useNavigate } from "react-router"
 
 const AddBlog = () => {
+      const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -28,6 +29,7 @@ const AddBlog = () => {
         alert("Blog Create SuccessFully")
         reset()
       }
+      navigate("/dashboard/manageBlogs")
     } catch (error) {
       console.log("Error postion a new Blog", error)
     }

@@ -18,15 +18,21 @@ const ManageBlogs = () => {
 
 
 
-//-------------Deleted Blog-----------
-const handleBlog = async (_id) =>{
-  const response = await axios.delete(`http://localhost:8000/blogs/${_id}`)
-  if(response.status === 200){
-    alert("Blog Deleted SuccessFully")
+  //-------------Deleted Blog-----------
+  const handleDeleteBlog = async (id) => {
+    //------Feleted------Confirmation----------
+    if (window.confirm("Are you sure want to delete")) {
+      try {
+        const response = await axios.delete(`http://localhost:8000/blogs/${id}`)
+        if (response.status === 200) {
+          setBlogs(blogs.filter(blog => blog._id !== id))
+          alert("Blog Deleted SuccessFully")
+        }
+      } catch (error) {
+        console.log("Error Deleting blog:" + error)
+      }
+    }
   }
-  console.log(response.data)
-   console.log("Delete Blog", _id)
-}
 
 
 
@@ -101,7 +107,7 @@ const handleBlog = async (_id) =>{
                           <button className='bg-yellow-500 text-white px-2 py-1 hover:bg-yellow-600 cursor-pointer'><FaEdit size={20} /></button>
                         </Link>
                         <Link>
-                          <button onClick={() => handleBlog(blog._id)}  className='bg-red-500 text-white px-2 py-1 hover:bg-red-600 cursor-pointer'><MdDelete size={20} /></button>
+                          <button onClick={() => handleDeleteBlog(blog?._id)} className='bg-red-500 text-white px-2 py-1 hover:bg-red-600 cursor-pointer'><MdDelete size={20} /></button>
                         </Link>
                       </td>
                     </tr>
