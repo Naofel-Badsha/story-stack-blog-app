@@ -16,9 +16,9 @@ const About = () => {
         {/* mission */}
         <div className='grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-20'>
           <div>
-            <h2 className='text-3xl font-semibold mb-4'>Our Mission</h2>
-            <p className='mb-4'>We are dedicated to providing the best solutions for our customers by focusing on quality, innovation, and customer satisfaction. Our mission is to help you succeed in the digital age by delivering reliable and impactful digital products and services.</p>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa nulla porro minima qui facilis ipsam molestiae sint mollitia facere ullam fugit, tenetur sunt ducimus debitis dolorem iusto blanditiis consequuntur maxime!</p>
+            <h2 className='text-3xl text-gray-900 dark:text-white font-semibold mb-4'>Our Mission</h2>
+            <p className='mb-4 text-gray-700 dark:text-gray-400'>We are dedicated to providing the best solutions for our customers by focusing on quality, innovation, and customer satisfaction. Our mission is to help you succeed in the digital age by delivering reliable and impactful digital products and services.</p>
+            <p className="text-gray-700 dark:text-gray-400">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa nulla porro minima qui facilis ipsam molestiae sint mollitia facere ullam fugit, tenetur sunt ducimus debitis dolorem iusto blanditiis consequuntur maxime!</p>
           </div>
           <div className="overflow-hidden rounded-lg">
             <img src="https://i.ibb.co.com/H0n2Xd4/imageye-imgi-249-blog1768558037.webp" alt="" className='w-full md:h-96 rounded-lg shadow-lg hover:scale-110 duration-5000' />
@@ -28,9 +28,9 @@ const About = () => {
         {/* vission */}
         <div className='grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-20'>
           <div className='order-1 md:order-2'>
-            <h2 className='text-3xl font-semibold mb-4'>Our Vission</h2>
-            <p className='mb-4'>We are dedicated to providing the best solutions for our customers by focusing on quality, innovation, and customer satisfaction. Our mission is to help you succeed in the digital age by delivering reliable and impactful digital products and services.</p>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa nulla porro minima qui facilis ipsam molestiae sint mollitia facere ullam fugit, tenetur sunt ducimus debitis dolorem iusto blanditiis consequuntur maxime!</p>
+            <h2 className='text-3xl font-semibold mb-4 text-gray-900 dark:text-white'>Our Vission</h2>
+            <p className='mb-4 text-gray-700 dark:text-gray-400'>We are dedicated to providing the best solutions for our customers by focusing on quality, innovation, and customer satisfaction. Our mission is to help you succeed in the digital age by delivering reliable and impactful digital products and services.</p>
+            <p className="text-gray-700 dark:text-gray-400">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa nulla porro minima qui facilis ipsam molestiae sint mollitia facere ullam fugit, tenetur sunt ducimus debitis dolorem iusto blanditiis consequuntur maxime!</p>
           </div>
           <div className='order-2 md:order-1 overflow-hidden rounded-lg'>
             <img src="https://i.ibb.co.com/d0m1pZfn/imageye-imgi-138-Ma-SH-Automation-graphic.webp" alt="" className='w-full md:h-96 rounded-lg shadow-lg hover:scale-110 transition-all duration-500' />

@@ -7,14 +7,14 @@
 /* Default Light Theme */
 :root {
   --bg: white;
-  --text: black;
+  --text: #111827;
   --primary: #E64839;
 }
 
 /* Dark Theme */
 .dark {
-  --bg: #0f172a;
-  --text: white;
+  --bg: #111827;
+  --text: #111827;
 }
 
 body {

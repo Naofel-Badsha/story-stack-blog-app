@@ -79,7 +79,7 @@ const Navbar = () => {
               {/*--------------User----Icon------*/}
               <div>
                 <Link to="/login">
-                  <button className=" hover:text-gray-400 cursor-pointer transition-all">
+                  <button className=" hover:text-[#E64839] cursor-pointer transition-all">
                     <FaUser size={20} />
                   </button>
                 </Link>
@@ -87,7 +87,7 @@ const Navbar = () => {
               {/*------------NightMode-Darkmode-----------*/}
               <button
                 onClick={toggleTheme}
-                className="p-2 rounded-full bg-gray-200 dark:bg-slate-700 cursor-pointer"
+                className="p-2 rounded-full bg-gray-200 dark:bg-slate-700 dark:text-white cursor-pointer"
               >
                 {darkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
               </button>
