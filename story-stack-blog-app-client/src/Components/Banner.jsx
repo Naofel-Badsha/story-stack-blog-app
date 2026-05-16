@@ -1,10 +1,15 @@
-
+import { motion } from "motion/react"
 const Banner = () => {
     return (
-        <section className="container mx-auto pt-20 px-4 lg:px-0">
+        <motion.section
+        initial={{opacity: 0, scale: 0.5}}
+        animate={{opacity: 1, scale: 1}}
+         transition={{duration: 0.5}}
+
+         className="container mx-auto pt-20 px-4 lg:px-0">
             <div className="md:min-h-[500px] h-80 w-full bg-center bg-cover rounded-xl" style={{ backgroundImage: `url("https://i.ibb.co.com/Rkyccd9j/blog-0.png")` }}>
                 <div className="flex flex-col h-full justify-end p-5 text-white">
-                    <span className="bg-[#E64839] w-fit px-4 py-1 rounded-md mb-3">
+                    <span  className="bg-[#E64839] w-fit px-4 py-1 rounded-md mb-3">
                         Technology
                     </span>
                     <h2 className="sm:text-3xl text-2xl font-bold md:w-1/2 mb-5">The Impact of Technology on the Workplace: How Technology is Changing</h2>
@@ -18,7 +23,7 @@ const Banner = () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </motion.section>
     )
 }
 
