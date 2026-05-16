@@ -4,8 +4,9 @@ import TextAreaField from "./TextAreaField"
 import axios from "axios"
 import { useNavigate } from "react-router"
 
+
 const AddBlog = () => {
-      const navigate = useNavigate();
+  const navgate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -16,7 +17,7 @@ const AddBlog = () => {
     const blogData = {
       title: data.title,
       description: data.description,
-      image: data.images,
+      image: data.image,
       author: {
         name: data.authorName,
         image: data.authorImages
@@ -24,12 +25,12 @@ const AddBlog = () => {
     }
     try {
       const response = await axios.post(`http://localhost:8000/blogs/add-post`, blogData)
-      console.log(response.data)
-      if(response.status === 200){
+      if (response.status === 200) {
         alert("Blog Create SuccessFully")
+        navgate("/dashboard/manageBlogs")
         reset()
       }
-      navigate("/dashboard/manageBlogs")
+
     } catch (error) {
       console.log("Error postion a new Blog", error)
     }
@@ -49,40 +50,40 @@ const AddBlog = () => {
           <form onSubmit={handleSubmit(onSubmit)} className='bg-white p-6 rounded-lg shadow-md'>
             {/*---------Input------1--------*/}
             <InputField label="Blog Title"
-            id="title"
-            type="text"
-           register = {register("title", { required: true })}
-            placeholder="Blog Title"
+              id="title"
+              type="text"
+              register={register("title", { required: true })}
+              placeholder="Blog Title"
             />
             {/*---------Input------2--------*/}
             <InputField label="Author Name"
-            id="authorName"
-            type="text"
-            register = {register("authorName", { required: true })}
-            placeholder="Author Name"
+              id="authorName"
+              type="text"
+              register={register("authorName", { required: true })}
+              placeholder="Author Name"
             />
             {/*---------Input------3--------*/}
             <InputField label="Author Images Url"
-            id="authorImages"
-            type="url"
-            register = {register("authorImages", { required: true })}
-            placeholder="Author Images Url"
+              id="authorImages"
+              type="url"
+              register={register("authorImages", { required: true })}
+              placeholder="Author Images Url"
             />
             {/*---------Input------4--------*/}
             <InputField label="Blog Images Url"
-            id="images"
-            type="url"
-            register = {register("images", { required: true })}
-            placeholder="Blog Images Url"
+              id="image"
+              type="url"
+              register={register("image", { required: true })}
+              placeholder="Blog Images Url"
             />
-            <TextAreaField 
-            label="Blog Description"
-            id="description"
-            type="text"
-            register = {register("description", { required: true })}
-            placeholder="Blog Description"
+            <TextAreaField
+              label="Blog Description"
+              id="description"
+              type="text"
+              register={register("description", { required: true })}
+              placeholder="Blog Description"
             />
-            
+
             <div>
               <button
                 type='submit'

@@ -1,25 +1,65 @@
 import { useForm } from "react-hook-form"
 import InputField from "../AddBlog/InputField"
 import TextAreaField from "../AddBlog/TextAreaField"
+import { useNavigate, useParams } from "react-router"
+import { useEffect } from "react"
+import axios from "axios"
 
 const UpdateBlog = () => {
-    const {
-      register,
-      handleSubmit,
-      formState: { errors },
-    } = useForm()
-  
-    const onSubmit = (data) => {
-      const blogData = {
-        title: data.title,
-        description: data.description,
-        image: data.images,
-        author: {
-          name: data.authorName,
-          image: data.authorImages
-        }
+  const { id } = useParams()
+  const navgate = useNavigate()
+
+  const { register, handleSubmit, reset, setValue, formState: { errors } } = useForm();
+
+  useEffect(() => {
+    const fetchSingleBlog = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8000/blogs/${id}`)
+        const blog = response.data.blog
+
+        setValue("title", blog?.title);
+        setValue("description", blog?.description);
+        setValue("authorName", blog?.author?.name);
+        setValue("authorImages", blog?.author?.image);
+        setValue("image", blog?.image);
+      } catch (error) {
+        console.log("Faild To  fetch blog", + error)
       }
     }
+
+    fetchSingleBlog()
+    // reset()
+  }, [])
+
+
+
+  const onSubmit = async (data) => {
+    const blogData = {
+      title: data.title,
+      description: data.description,
+      image: data.image,
+      author: {
+        name: data.authorName,
+        image: data.authorImages
+      }
+    }
+    console.log("Blog data updateed", blogData)
+    try {
+      const response = await axios.put(`http://localhost:8000/blogs/${id}`, blogData)
+      console.log(response.data)
+      if (response.status === 200) {
+        alert("Blog Create SuccessFully")
+        navgate("/")
+        reset()
+      }
+
+    } catch (error) {
+      console.log("Update Faild To Blog", + error)
+    }
+
+
+
+  }
   return (
     <section>
       <div>
@@ -54,9 +94,9 @@ const UpdateBlog = () => {
             />
             {/*---------Input------4--------*/}
             <InputField label="Blog Images Url"
-              id="images"
+              id="image"
               type="url"
-              register={register("images", { required: true })}
+              register={register("image", { required: true })}
               placeholder="Blog Images Url"
             />
             <TextAreaField

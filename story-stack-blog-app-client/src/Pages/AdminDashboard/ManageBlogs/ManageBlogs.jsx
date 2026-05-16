@@ -52,6 +52,12 @@ const ManageBlogs = () => {
                   </th>
                   <th className="p-4 border-b border-slate-600 ">
                     <p className="text-[18px] font-normal leading-none ">
+                      Images
+                    </p>
+                  </th>
+
+                  <th className="p-4 border-b border-slate-600 ">
+                    <p className="text-[18px] font-normal leading-none ">
                       Title
                     </p>
                   </th>
@@ -83,6 +89,11 @@ const ManageBlogs = () => {
                         </p>
                       </td>
                       <td className="p-4 border-b border-slate-700">
+                        <div className="w-[50px] h-[50px]">
+                          <img src={blog.image} alt="Blog Images" className="w-full h-full object-cover rounded-[4px]"/>
+                        </div>
+                      </td>
+                      <td className="p-4 border-b border-slate-700">
                         <p className="text-sm  font-semibold">
                           {blog.title}
                         </p>
@@ -100,7 +111,7 @@ const ManageBlogs = () => {
                         </p>
                       </td>
                       <td className="p-4 text-sm border-b border-slate-700 space-x-2">
-                        <Link to={`/blogDetails/${blog._id}`} >
+                        <Link to={`/blogs/${blog._id}`} >
                           <button className='bg-blue-500 text-white px-2 py-1 hover:bg-blue-600 cursor-pointer'><FaEye size={20} /></button>
                         </Link>
                         <Link to={`/dashboard/updateBlog/${blog._id}`}>

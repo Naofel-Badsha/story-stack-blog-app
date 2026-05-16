@@ -4,7 +4,7 @@ import BlogCard from "./BlogCard"
 const BlogList = () => {
     const [searchTerm] = useState("") //TODO: Use Blog Context
     const [blogs, setBlogs] = useState([])
-    const [showBlogs, setShowBlogs] = useState(6)
+    const [showBlogs, setShowBlogs] = useState(10)
     useEffect(() => {
         fetch("http://localhost:8000/blogs")
             .then(res => res.json())
