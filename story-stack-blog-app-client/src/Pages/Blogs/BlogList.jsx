@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import BlogCard from "./BlogCard"
+import { BlogContext } from "../../Context/BlogContext"
 
 const BlogList = () => {
-    const [searchTerm] = useState("") //TODO: Use Blog Context
+    const { searchTerm } = useContext(BlogContext)
     const [blogs, setBlogs] = useState([])
     const [showBlogs, setShowBlogs] = useState(10)
     useEffect(() => {
@@ -12,7 +13,7 @@ const BlogList = () => {
             .catch(error => console.error("Error fetching blog data: " + error))
     }, [])
 
-    console.log(blogs)
+
 
     // filter blogs based on title, description and author
     const filteredBlogs = blogs.filter(blog =>
