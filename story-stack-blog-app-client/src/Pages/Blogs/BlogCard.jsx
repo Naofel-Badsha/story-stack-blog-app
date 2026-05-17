@@ -5,7 +5,7 @@ import Reveal from '../../animation/Reveal'
 const BlogCard = ({ blog }) => {
     return (
         <Reveal>
-            <div className='border-gray-200 rounded-lg p-4 bg-white shadow-md'>
+            <div className='border-gray-200 rounded-lg p-4 bg-white shadow-md border'>
                 <Link to={`/blogs/${blog?._id}`}>
                     <div className="overflow-hidden rounded-md mb-4">
                         <img
