@@ -55,8 +55,11 @@ const GetASingleBlog = async (req, res) => {
 //---------Post a new Blog-----------
 const addedANewBlog = async (req, res) => {
     try {
-        const blog = await Blog.create(req.body);
-        res.status(201).json({
+        const newBlog = new Blog({
+            ...req.body
+        })
+        const blog = await newBlog.save();
+        res.status(200).json({
             success: true,
             message: "Blog created successfully",
             blog
@@ -135,5 +138,5 @@ module.exports = {
     GetASingleBlog,
     addedANewBlog,
     updatedABlog,
-    deleteASingleBlog 
+    deleteASingleBlog
 }
